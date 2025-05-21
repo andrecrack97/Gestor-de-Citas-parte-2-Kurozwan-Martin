@@ -1,6 +1,6 @@
 import Cita from './Cita';
 
-function ListadoCitas({ reservas }) {
+function ListadoCitas({ reservas, eliminarReserva }) {
   return (
     <div className="listado">
       <h2>Reservas</h2>
@@ -8,7 +8,7 @@ function ListadoCitas({ reservas }) {
         <p>No hay reservas aún</p>
       ) : (
         reservas.map((reserva) => (
-          <Cita key={reserva.id} reserva={reserva} />
+          <Cita key={reserva.id} reserva={reserva} eliminarReserva={eliminarReserva} />
         ))
       )}
     </div>

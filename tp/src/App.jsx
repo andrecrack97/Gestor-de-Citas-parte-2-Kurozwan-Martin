@@ -4,6 +4,10 @@ import Formulario from './components/Formulario'
 import ListadoReservas from './components/ListadoCitas'
 
 function App() {
+  const eliminarReserva = (id) => {
+    setReservas(reservas.filter(reserva => reserva.id !== id))
+  }
+
   const [reservas, setReservas] = useState([
     {
       id: 1,
@@ -15,12 +19,16 @@ function App() {
     }
   ])
 
+  const agregarReserva = (reserva) => {
+    setReservas([...reservas, reserva])
+  }
+
   return (
     <div className="contenedor-app">
       <h1>Serrano Corner – Reserva de Canchas</h1>
       <div className="contenido-principal">
-        <Formulario />
-        <ListadoReservas reservas={reservas} />
+        <Formulario agregarReserva={agregarReserva} />
+        <ListadoReservas reservas={reservas} eliminarReserva={eliminarReserva} />
       </div>
     </div>
   )
