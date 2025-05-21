@@ -1,34 +1,28 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Formulario from './components/Formulario'
+import ListadoReservas from './components/ListadoCitas'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [reservas, setReservas] = useState([
+    {
+      id: 1,
+      equipo: 'Los Pibes del Fondo',
+      responsable: 'Tomi',
+      fecha: '2025-04-20',
+      hora: '22:00',
+      comentarios: 'Traer pelotas y pecheras'
+    }
+  ])
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="contenedor-app">
+      <h1>Serrano Corner – Reserva de Canchas</h1>
+      <div className="contenido-principal">
+        <Formulario />
+        <ListadoReservas reservas={reservas} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
